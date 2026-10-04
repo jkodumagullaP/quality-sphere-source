@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+coverage/
+artifacts/
+storage/objects/*
+storage/evidence/*
+storage/reports/*
+!storage/**/.gitkeep
+*.log

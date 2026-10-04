@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {adapters} from '../src/adapters.js';
+test('real and external adapter boundaries are explicit',()=>{assert.ok(adapters.has('UI'));assert.ok(adapters.has('API'));assert.ok(adapters.has('PERFORMANCE'));assert.ok(adapters.has('SECURITY'));assert.ok(adapters.has('MOBILE'))});
+test('unconfigured external adapter never reports synthetic pass',async()=>{await assert.rejects(()=>adapters.get('PERFORMANCE')!.execute({executionCaseId:'x',baseUrl:'https://example.invalid',steps:[],definition:{}}),/synthetic success is forbidden/)});

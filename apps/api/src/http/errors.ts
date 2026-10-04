@@ -1,0 +1,2 @@
+import type {FastifyInstance} from 'fastify';
+export function errors(app:FastifyInstance){app.setErrorHandler((err,req,reply)=>{req.log.error({err,requestId:(req as any).requestId},'request.failed');const status=(err as any).statusCode&&Number.isInteger((err as any).statusCode)?(err as any).statusCode:500;reply.status(status).send({error:status===500?'Internal Server Error':(err as Error).message,requestId:(req as any).requestId})})}
